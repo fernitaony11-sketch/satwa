@@ -54,68 +54,65 @@
 
     <!-- Main Content -->
     <main>
-        <!-- BERANDA: Hero + Statistik Animasi -->
+        <!-- BERANDA: Hero + Statistik Animasi + GAMBAR OTOMATIS -->
         <section id="home" class="section active">
             <div class="hero">
                 <div class="hero-content">
-                    <div class="badge">🏆 #1 Edukasi Satwa Indonesia</div>
+                    <div class="badge">🐯 50+ Gambar Satwa Otomatis</div>
                     <h1>Lindungi <span class="gradient">Satwa Kita</span><br>Bersama AI</h1>
                     <p>Klasifikasi lingkungan berbasis AI + edukasi sosial pelestarian satwa</p>
                     
                     <!-- Statistik Animasi -->
                     <div class="stats">
                         <div class="stat">
-                            <span id="uploads">1247</span>+
-                            <small>Gambar</small>
+                            <span id="uploads">156</span>+
+                            <small>Gambar Auto</small>
                         </div>
                         <div class="stat">
-                            <span id="species">28</span>
+                            <span id="species">12</span>
                             <small>Spesies</small>
                         </div>
                         <div class="stat">
-                            <span id="users">5892</span>
+                            <span id="users">1247</span>
                             <small>Pengguna</small>
                         </div>
                     </div>
                     
                     <div class="cta">
-                        <button class="btn-primary" onclick="showSection('classifier')">
-                            <i class="fas fa-camera"></i> Klasifikasi AI
+                        <button class="btn-primary" onclick="showSection('gallery')">
+                            <i class="fas fa-images"></i> Lihat Galeri
                         </button>
-                        <button class="btn-secondary" onclick="showSection('education')">
-                            <i class="fas fa-book"></i> Edukasi Satwa
+                        <button class="btn-secondary" onclick="showSection('classifier')">
+                            <i class="fas fa-robot"></i> Klasifikasi AI
                         </button>
                     </div>
                 </div>
-                <div class="hero-image">
-                    <img src="https://images.unsplash.com/photo-1426604835664-4c2c868a865d?w=500&fit=crop" alt="Satwa">
-                    <div class="floating-animals">
-                        <div class="animal tiger"><i class="fas fa-tiger"></i></div>
-                        <div class="animal rhino"><i class="fas fa-hippo"></i></div>
-                        <div class="animal bird"><i class="fas fa-dove"></i></div>
-                    </div>
+                <!-- HERO GAMBAR OTOMATIS -->
+                <div class="hero-slider">
+                    <img src="https://images.unsplash.com/photo-1426604835664-4c2c868a865d?w=500&fit=crop" alt="Harimau Sumatera" class="hero-img active">
+                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=500&fit=crop" alt="Badak Jawa" class="hero-img">
+                    <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=500&fit=crop" alt="Burung Maleo" class="hero-img">
+                    <img src="https://images.unsplash.com/photo-1434394690282-1bbd9250524e?w=500&fit=crop" alt="Orangutan" class="hero-img">
                 </div>
             </div>
         </section>
 
-        <!-- GALERI: Gambar Satwa Interaktif -->
+        <!-- GALERI: 24 GAMBAR SATWA OTOMATIS -->
         <section id="gallery" class="section">
-            <h2><i class="fas fa-images"></i> Galeri Satwa Liar</h2>
+            <h2><i class="fas fa-images"></i> Galeri Satwa Liar Indonesia</h2>
             <div class="filters">
-                <button class="filter active" data-filter="all">Semua</button>
-                <button class="filter" data-filter="tiger">Harimau</button>
-                <button class="filter" data-filter="rhino">Badak</button>
-                <button class="filter" data-filter="bird">Burung</button>
+                <button class="filter active" data-filter="all">📸 Semua (24)</button>
+                <button class="filter" data-filter="tiger">🐅 Harimau (6)</button>
+                <button class="filter" data-filter="rhino">🦏 Badak (6)</button>
+                <button class="filter" data-filter="bird">🐦 Burung (6)</button>
+                <button class="filter" data-filter="other">🐒 Lainnya (6)</button>
             </div>
             <div class="gallery-grid" id="gallery">
-                <!-- Dynamic -->
+                <!-- 24 GAMBAR OTOMATIS LOADED BY JS -->
             </div>
-            <button class="upload-btn" onclick="showSection('classifier')">
-                <i class="fas fa-plus"></i> Upload Gambar Satwa
-            </button>
         </section>
 
-        <!-- KLASIFIKASI AI: Drag-Drop + Mock AI -->
+        <!-- KLASIFIKASI AI -->
         <section id="classifier" class="section">
             <h2><i class="fas fa-robot"></i> Klasifikasi AI Satwa</h2>
             <div class="classifier">
@@ -127,22 +124,27 @@
                     <button onclick="document.getElementById('fileInput').click()">
                         <i class="fas fa-camera"></i> Pilih Gambar
                     </button>
+                    <div class="demo-btns">
+                        <button onclick="demoClassify('tiger')">🐅 Demo Harimau</button>
+                        <button onclick="demoClassify('rhino')">🦏 Demo Badak</button>
+                        <button onclick="demoClassify('bird')">🐦 Demo Burung</button>
+                    </div>
                 </div>
                 
                 <div id="loading" class="loading hidden">
                     <div class="spinner"></div>
-                    <p>AI sedang menganalisis...</p>
+                    <p>🤖 AI sedang menganalisis gambar...</p>
                 </div>
                 
                 <div id="result" class="result hidden">
                     <div class="result-preview">
-                        <img id="resultImg" alt="Hasil">
+                        <img id="resultImg" alt="Hasil AI">
                         <div class="actions">
                             <button onclick="shareResult()" class="share">
-                                <i class="fas fa-share"></i> Bagikan
+                                <i class="fas fa-share"></i> 📱 Bagikan
                             </button>
                             <button onclick="resetUpload()" class="reset">
-                                <i class="fas fa-redo"></i> Lagi
+                                <i class="fas fa-redo"></i> 🔄 Lagi
                             </button>
                         </div>
                     </div>
@@ -157,7 +159,7 @@
                             <div>Populasi: <span id="pop">-</span></div>
                         </div>
                         <div class="tips">
-                            <h4>Cara Melindungi:</h4>
+                            <h4>🛡️ Cara Melindungi:</h4>
                             <ul id="tipsList"></ul>
                         </div>
                     </div>
@@ -165,15 +167,15 @@
             </div>
         </section>
 
-        <!-- EDUKASI: 3 Spesies + Action Plan -->
+        <!-- EDUKASI -->
         <section id="education" class="section">
             <h2><i class="fas fa-graduation-cap"></i> Edukasi Pelestarian</h2>
             <div class="cards">
                 <div class="card critical">
+                    <img src="https://images.unsplash.com/photo-1426604835664-4c2c868a865d?w=300&fit=crop" alt="Harimau">
                     <div class="icon"><i class="fas fa-tiger"></i></div>
                     <h3>Harimau Sumatera</h3>
-                    <div class="pop">400 ekor</div>
-                    <p>Terancam punah akibat deforestasi</p>
+                    <div class="pop">🐯 400 ekor</div>
                     <ul>
                         <li>✅ Laporkan perburuan</li>
                         <li>✅ Tanam pohon habitat</li>
@@ -181,10 +183,10 @@
                     </ul>
                 </div>
                 <div class="card critical">
+                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=300&fit=crop" alt="Badak">
                     <div class="icon"><i class="fas fa-hippo"></i></div>
                     <h3>Badak Jawa</h3>
-                    <div class="pop">76 ekor</div>
-                    <p>Paling langka di dunia</p>
+                    <div class="pop">🦏 76 ekor</div>
                     <ul>
                         <li>✅ Tolak mitos obat</li>
                         <li>✅ Ekowisata Ujung Kulon</li>
@@ -192,10 +194,10 @@
                     </ul>
                 </div>
                 <div class="card endangered">
+                    <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=300&fit=crop" alt="Maleo">
                     <div class="icon"><i class="fas fa-dove"></i></div>
                     <h3>Burung Maleo</h3>
-                    <div class="pop">4000 ekor</div>
-                    <p>Telur diambil konsumsi</p>
+                    <div class="pop">🐦 4000 ekor</div>
                     <ul>
                         <li>✅ Jangan makan telur</li>
                         <li>✅ Edukasi lokal</li>
@@ -207,7 +209,7 @@
     </main>
 
     <footer>
-        <p>© 2025 SatwaAI - Pelestarian Satwa Indonesia</p>
+        <p>© 2025 SatwaAI - 50+ Gambar Satwa Otomatis • Pelestarian Indonesia</p>
     </footer>
 
     <script src="script.js"></script>
